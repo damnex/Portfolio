@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "VICTUS Portfolio"
+version = "1.0.0"
+id = "artifacts/victus-portfolio"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22195
+
+[services.development]
+run = "pnpm --filter @workspace/victus-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/victus-portfolio", "run", "build" ]
+publicDir = "artifacts/victus-portfolio/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22195"
+BASE_PATH = "/"
