@@ -52,10 +52,10 @@ const projects = [
     label: "SMART TRACKING APPLICATION",
     description:
       "A tracking application concept designed for intuitive interaction and smart monitoring portfolios.",
-    gradient: "linear-gradient(135deg, #F43F5E22, #2F80FF22)",
-    accent: "#F43F5E",
+    gradient: "linear-gradient(135deg, #2F80FF22, #22C55E22)",
+    accent: "#22C55E",
     url: "",
-    image: "",
+    image: `${import.meta.env.BASE_URL}project-namma.png`,
   },
   {
     id: "logo-graphic",
