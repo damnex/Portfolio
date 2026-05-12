@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { X, ExternalLink } from "lucide-react";
 
 const projects = [
@@ -172,41 +173,43 @@ export default function Projects() {
   const [selected, setSelected] = useState<(typeof projects)[0] | null>(null);
 
   return (
-    <section id="projects" className="relative py-24 px-6">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 30%, rgba(47,128,255,0.03) 0%, transparent 60%)",
-        }}
-      />
+    <>
+      <section id="projects" className="relative py-24 px-6">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at 50% 30%, rgba(47,128,255,0.03) 0%, transparent 60%)",
+          }}
+        />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-16">
-          <div className="section-label">// SECTION_05</div>
-          <h2 className="section-title">ACTIVE PROJECT MODULES</h2>
-          <div className="section-divider" />
-        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="mb-16">
+            <div className="section-label">// SECTION_05</div>
+            <h2 className="section-title">ACTIVE PROJECT MODULES</h2>
+            <div className="section-divider" />
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onOpen={setSelected}
-            />
-          ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onOpen={setSelected}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Modal */}
-      {selected && (
+      {selected && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          className="fixed inset-0 z-50 flex items-start sm:items-center justify-center overflow-y-auto px-4 py-24 sm:p-6"
           onClick={() => setSelected(null)}
           style={{ background: "rgba(5,5,5,0.88)" }}
         >
           <div
-            className="glass-card rounded-lg max-w-lg w-full p-8 relative"
+            className="glass-card rounded-lg max-w-lg w-full p-6 sm:p-8 relative"
             style={{ borderColor: `${selected.accent}40` }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -282,8 +285,9 @@ export default function Projects() {
                 </div>
               )}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
-    </section>
+    </>
   );
 }
