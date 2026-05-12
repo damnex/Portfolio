@@ -1,0 +1,6 @@
+{
+  "installCommand": "corepack pnpm install --ignore-scripts",
+  "buildCommand": "corepack pnpm --filter @workspace/victus-portfolio build",
+  "outputDirectory": "artifacts/victus-portfolio/dist/public",
+  "framework": "vite"
+}
