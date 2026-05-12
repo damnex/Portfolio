@@ -41,10 +41,10 @@ const projects = [
     label: "AI ACCESSIBILITY EXTENSION",
     description:
       "An AI-powered accessibility solution focused on improving digital usability and user interaction.",
-    gradient: "linear-gradient(135deg, #F59E0B22, #F43F5E22)",
-    accent: "#F59E0B",
+    gradient: "linear-gradient(135deg, #06B6D422, #2F80FF22)",
+    accent: "#06B6D4",
     url: "",
-    image: "",
+    image: `${import.meta.env.BASE_URL}project-purepath.png`,
   },
   {
     id: "namma",
