@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Logo and graphic designing thumbnail</title>
+  <desc id="desc">A warm UX UI illustration with design tools, wireframes, and branding elements.</desc>
+  <rect width="800" height="500" fill="#f6cc91"/>
+  <circle cx="400" cy="255" r="205" fill="#f8ead5"/>
+  <g stroke="#ead1ad" stroke-width="2" opacity=".55">
+    <path d="M195 210h425M180 245h445M210 285h390M242 150h310M275 115h250" />
+    <path d="M255 82v342M312 70v355M370 65v365M430 72v350M490 84v320M545 110v275" />
+  </g>
+  <g fill="none" stroke="#00374f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M392 300c12-76 82-120 155-91 54 22 80 83 57 137-24 57-89 84-145 61-42-17-68-58-67-107z" fill="#fff9ef"/>
+    <path d="M318 98l-54 16 26 115 70-16z" fill="#f9a625"/>
+    <path d="M463 215h48v80h-48z" fill="#fff9ef"/>
+    <path d="M482 235h20M482 253h20M482 272h20"/>
+    <path d="M540 225l50-3-16 48-34-45z" fill="#f9cf23"/>
+    <path d="M514 329l38 20-22 42-38-20z" fill="#f9cf23"/>
+    <path d="M548 330l45-53 27 23-45 53z" fill="#f8a829"/>
+    <path d="M468 354c20-8 44 6 45 27 1 18-15 30-36 29-17 0-32-11-35-25-3-13 8-25 26-31z" fill="#fff9ef"/>
+    <circle cx="463" cy="376" r="5" fill="#f9a625"/>
+    <circle cx="487" cy="371" r="5" fill="#f9a625"/>
+    <circle cx="493" cy="393" r="5" fill="#f9a625"/>
+  </g>
+  <g font-family="Poppins, Arial, sans-serif" font-weight="900" fill="#f59e0b" stroke="#00374f" stroke-width="5" paint-order="stroke">
+    <text x="190" y="190" font-size="78" transform="rotate(-9 190 190)">UX</text>
+    <text x="560" y="255" font-size="78" transform="rotate(10 560 255)">UI</text>
+  </g>
+  <g fill="none" stroke="#00374f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M295 300c-25-2-44 15-45 41l-1 31h96l-1-31c-1-25-20-39-49-41z" fill="#fff9ef"/>
+    <circle cx="298" cy="277" r="26" fill="#fff9ef"/>
+    <path d="M260 328l-23-18-14 19 22 18M338 328l23-18 14 19-22 18" />
+    <path d="M296 210c18 0 33 14 33 31 0 12-7 22-17 28v15h-31v-15c-11-6-17-16-17-28 0-17 14-31 32-31z" fill="#f9a625"/>
+    <path d="M281 292h31M286 305h22"/>
+    <path d="M220 240h-30M222 272h-30M374 240h30M372 272h30" />
+    <circle cx="260" cy="386" r="21" fill="#f9a625"/>
+    <circle cx="320" cy="398" r="24" fill="#fff9ef"/>
+    <path d="M315 386v24M303 398h24" />
+    <path d="M240 386l13-13M260 386l-12 14" />
+    <rect x="305" y="80" width="26" height="31" rx="3" fill="#f59e0b"/>
+    <rect x="372" y="85" width="28" height="28" rx="3" fill="#f59e0b" transform="rotate(-9 386 99)"/>
+    <rect x="401" y="73" width="27" height="28" rx="3" fill="#f59e0b" transform="rotate(-9 415 87)"/>
+    <path d="M520 112h32v23h-32zM458 138h31v24h-31zM520 138h31v24h-31zM584 138h31v24h-31zM487 169h31v24h-31zM552 169h31v24h-31z" fill="#fff9ef"/>
+    <path d="M536 135v33M489 150h95M504 169v-18M568 169v-18" />
+    <path d="M333 145h56v82h-56z" fill="#fff9ef"/>
+    <path d="M348 163l7 7 14-17M348 187l7 7 14-17M348 211l7 7 14-17" />
+    <circle cx="410" cy="210" r="28" fill="#f9a625"/>
+    <circle cx="410" cy="210" r="15" fill="#fff9ef"/>
+    <path d="M430 230l25 25" />
+    <path d="M328 407h66v61h-66z" fill="#f9a625"/>
+    <path d="M349 422l36 28M360 432l-10 28" />
+  </g>
+</svg>

@@ -57,6 +57,17 @@ const projects = [
     url: "",
     image: "",
   },
+  {
+    id: "logo-graphic",
+    name: "Logo & Graphic Designing",
+    label: "CREATIVE BRAND IDENTITY",
+    description:
+      "Designed logos, posters, and brand graphics for digital platforms and business identities.",
+    gradient: "linear-gradient(135deg, #F59E0B22, #2F80FF22)",
+    accent: "#F59E0B",
+    url: "",
+    image: `${import.meta.env.BASE_URL}project-logo-graphic.svg`,
+  },
 ];
 
 function ProjectCard({
