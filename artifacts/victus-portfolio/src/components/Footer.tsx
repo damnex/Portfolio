@@ -31,12 +31,15 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* Brand */}
           <div>
-            <div
+            <a
+              href="https://www.linkedin.com/company/110887907"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-display text-2xl font-black mb-2 neon-text-cyan"
               style={{ color: "#2F80FF" }}
             >
-              DHEENA
-            </div>
+              DAMNEX
+            </a>
             <p
               className="font-mono text-xs leading-relaxed"
               style={{ color: "rgba(255,255,255,0.35)", maxWidth: "220px" }}
@@ -104,7 +107,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
         >
           <div className="font-mono text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
-            DHEENA PORTFOLIO &copy; 2026
+            DAMNEX PORTFOLIO &copy; 2026
           </div>
         </div>
       </div>
