@@ -1,10 +1,7 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-
 const skillGroups = [
   {
     category: "Development",
-    color: "#00F0FF",
+    color: "#2F80FF",
     skills: [
       { name: "HTML", level: 92 },
       { name: "CSS", level: 90 },
@@ -16,7 +13,7 @@ const skillGroups = [
   },
   {
     category: "Design",
-    color: "#8B5CF6",
+    color: "#F59E0B",
     skills: [
       { name: "UI/UX Design", level: 95 },
       { name: "Graphic Design", level: 88 },
@@ -26,7 +23,7 @@ const skillGroups = [
   },
   {
     category: "Tools",
-    color: "#FF6B00",
+    color: "#F43F5E",
     skills: [
       { name: "Figma", level: 92 },
       { name: "Canva", level: 88 },
@@ -36,7 +33,7 @@ const skillGroups = [
   },
   {
     category: "Soft Skills",
-    color: "#22c55e",
+    color: "#84CC16",
     skills: [
       { name: "Problem Solving", level: 90 },
       { name: "Creativity", level: 95 },
@@ -46,69 +43,50 @@ const skillGroups = [
   },
 ];
 
-function SkillBar({ name, level, color, inView, delay }: { name: string; level: number; color: string; inView: boolean; delay: number }) {
+function SkillBar({ name, level, color }: { name: string; level: number; color: string }) {
   return (
-    <motion.div
-      className="mb-4"
-      initial={{ opacity: 0, x: -20 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay }}
-    >
+    <div className="mb-4">
       <div className="flex justify-between items-center mb-1.5">
         <span className="font-mono text-xs" style={{ color: "rgba(255,255,255,0.75)" }}>{name}</span>
         <span className="font-mono text-xs" style={{ color }}>{level}%</span>
       </div>
       <div className="skill-bar-track">
-        <motion.div
+        <div
           className="skill-bar-fill"
           style={{
+            width: `${level}%`,
             background: `linear-gradient(90deg, ${color}, ${color}aa)`,
-            boxShadow: `0 0 8px ${color}66`,
           }}
-          initial={{ width: "0%" }}
-          animate={inView ? { width: `${level}%` } : { width: "0%" }}
-          transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
         />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="skills" className="relative py-24 px-6">
       {/* Ambient */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.04) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.04) 0%, transparent 70%)",
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-16">
           <div className="section-label">// SECTION_03</div>
           <h2 className="section-title">CORE TECHNOLOGIES</h2>
           <div className="section-divider" />
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {skillGroups.map((group, gi) => (
-            <motion.div
+            <div
               key={group.category}
               data-testid={`skill-group-${gi}`}
               className="glass-card rounded-lg p-6 relative overflow-hidden group"
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: gi * 0.12 }}
             >
               {/* Top color accent */}
               <div
@@ -149,12 +127,10 @@ export default function Skills() {
                     name={skill.name}
                     level={skill.level}
                     color={group.color}
-                    inView={inView}
-                    delay={gi * 0.1 + si * 0.08}
                   />
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

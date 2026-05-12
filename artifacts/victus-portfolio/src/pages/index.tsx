@@ -1,5 +1,3 @@
-import BootScreen from "@/components/BootScreen";
-import CustomCursor from "@/components/CustomCursor";
 import Particles from "@/components/Particles";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -14,8 +12,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="bg-grid-pattern min-h-screen text-foreground" style={{ backgroundColor: "#050505" }}>
-      <BootScreen />
-      <CustomCursor />
       <Particles />
       <Navbar />
       <main className="relative z-10">

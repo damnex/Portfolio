@@ -1,41 +1,9 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-
-function useTypingEffect(text: string, speed = 60, startDelay = 0) {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    let interval: ReturnType<typeof setInterval>;
-    setDisplayed("");
-    setDone(false);
-
-    timeout = setTimeout(() => {
-      let i = 0;
-      interval = setInterval(() => {
-        if (i < text.length) {
-          setDisplayed(text.slice(0, i + 1));
-          i++;
-        } else {
-          clearInterval(interval);
-          setDone(true);
-        }
-      }, speed);
-    }, startDelay);
-
-    return () => {
-      clearTimeout(timeout);
-      clearInterval(interval);
-    };
-  }, [text, speed, startDelay]);
-
-  return { displayed, done };
-}
+import { ChevronDown, Download } from "lucide-react";
 
 export default function Hero() {
-  const { displayed: initText } = useTypingEffect("Initializing VICTUS System...", 55, 3800);
+  const profileImage = `${import.meta.env.BASE_URL}dheena-profile.jpeg`;
+  const damnexLogo = `${import.meta.env.BASE_URL}damnex-logo.png`;
+  const resumeUrl = `${import.meta.env.BASE_URL}dheenadhayalan-resume.pdf`;
 
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
@@ -49,96 +17,59 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-20"
     >
-      {/* Ambient glow blobs */}
-      <div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(0,240,255,0.06) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Left Content */}
-        <motion.div
-          className="flex flex-col gap-6"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 3.6 }}
-        >
+        <div className="hero-copy flex flex-col gap-6">
           {/* Init label */}
           <div
-            className="font-mono text-sm h-6 flex items-center gap-2"
-            style={{ color: "rgba(0,240,255,0.7)" }}
+            className="hero-status font-mono text-sm h-6 flex items-center gap-2"
+            style={{ color: "rgba(47,128,255,0.7)" }}
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ background: "#00F0FF" }} />
-            {initText}
-            <span className="animate-blink" style={{ color: "#00F0FF" }}>_</span>
+            <span className="status-dot w-2 h-2 rounded-full bg-primary" style={{ background: "#2F80FF" }} />
+            BUILDING DIGITAL EXPERIENCES
           </div>
 
           {/* Main heading */}
           <div>
-            <motion.h1
-              className="font-display font-black leading-none tracking-wide"
+            <h1
+              className="hero-title font-display font-black leading-none tracking-wide"
               style={{
-                fontSize: "clamp(2rem, 6vw, 4rem)",
+                fontSize: "clamp(2.35rem, 6.6vw, 4.75rem)",
                 color: "#fff",
-                textShadow: "0 0 40px rgba(0,240,255,0.15)",
               }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 3.9 }}
             >
               DHEENA
               <br />
-              <span className="neon-text-cyan" style={{ color: "#00F0FF" }}>
+              <span className="neon-text-cyan" style={{ color: "#2F80FF" }}>
                 DHAYALAN M
               </span>
-            </motion.h1>
+            </h1>
           </div>
 
-          {/* Subtitle */}
-          <motion.p
-            className="text-base md:text-lg font-medium"
-            style={{ color: "rgba(255,255,255,0.75)", maxWidth: "480px", lineHeight: "1.7" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 4.1 }}
+          <div
+            className="hero-badge inline-flex w-fit max-w-full items-center gap-3 rounded-full border px-4 py-2"
+            style={{
+              borderColor: "rgba(47,128,255,0.35)",
+              background: "rgba(47,128,255,0.06)",
+              color: "rgba(255,255,255,0.88)",
+            }}
           >
-            UI/UX Designer &amp; Developer crafting{" "}
-            <span style={{ color: "#8B5CF6" }}>futuristic digital experiences.</span>
-          </motion.p>
-
-          <motion.p
-            className="text-sm"
-            style={{ color: "rgba(255,255,255,0.45)", maxWidth: "440px" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 4.2 }}
-          >
-            Building intelligent digital systems through design, technology, and innovation.
-          </motion.p>
+            <span className="damnex-mark" aria-hidden="true">
+              <img src={damnexLogo} alt="" decoding="async" />
+            </span>
+            <span className="font-display text-xs md:text-base font-semibold tracking-wide leading-relaxed">
+              Designer &amp; Developer | Founder &amp; CEO of Damnex
+            </span>
+          </div>
 
           {/* Buttons */}
-          <motion.div
-            className="flex flex-wrap gap-4 mt-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 4.4 }}
-          >
+          <div className="hero-actions flex flex-wrap gap-4">
             <button
               data-testid="hero-btn-enter"
               className="btn-primary"
               onClick={scrollToAbout}
             >
-              Enter System
+              Enter Portfolio
             </button>
             <button
               data-testid="hero-btn-projects"
@@ -147,190 +78,111 @@ export default function Hero() {
             >
               Explore Projects
             </button>
-          </motion.div>
+            <a
+              data-testid="hero-btn-resume"
+              href={resumeUrl}
+              download="Dheenadhayalan Resume.pdf"
+              className="btn-primary inline-flex items-center gap-2 no-underline"
+              aria-label="Download resume"
+            >
+              <Download size={15} aria-hidden="true" />
+              Resume
+            </a>
+          </div>
 
-          {/* Status line */}
-          <motion.div
-            className="flex items-center gap-6 mt-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 4.6 }}
-          >
-            {[
-              { label: "Projects", value: "10+" },
-              { label: "Experience", value: "3+ Yrs" },
-              { label: "Clients", value: "5+" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div
-                  className="font-display text-xl font-bold neon-text-cyan"
-                  style={{ color: "#00F0FF" }}
-                >
-                  {stat.value}
-                </div>
-                <div className="font-mono text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
+        </div>
 
         {/* Right — HUD Profile */}
-        <motion.div
-          className="flex items-center justify-center relative"
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 3.7 }}
-        >
-          <div className="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
+        <div className="hero-visual flex items-center justify-center relative">
+          <div className="relative w-[23rem] h-[23rem] md:w-[31rem] md:h-[31rem] flex items-center justify-center">
             {/* Outer ring */}
             <div
-              className="absolute inset-0 rounded-full animate-spin-slow"
+              className="hero-ring hero-ring-outer absolute inset-0 rounded-full"
               style={{
-                border: "1px solid rgba(0,240,255,0.25)",
-                boxShadow: "0 0 20px rgba(0,240,255,0.1)",
+                border: "1px solid rgba(47,128,255,0.25)",
+                boxShadow: "0 0 20px rgba(47,128,255,0.1)",
               }}
-            >
-              <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
-                style={{ background: "#00F0FF", boxShadow: "0 0 8px #00F0FF" }}
-              />
-              <div
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full"
-                style={{ background: "rgba(0,240,255,0.6)" }}
-              />
-            </div>
+            />
 
             {/* Middle ring */}
             <div
-              className="absolute animate-spin-reverse"
+              className="hero-ring hero-ring-inner absolute rounded-full"
               style={{
-                inset: "20px",
-                borderRadius: "50%",
-                border: "1px solid rgba(139,92,246,0.3)",
-              }}
-            >
-              <div
-                className="absolute top-0 right-0 w-1.5 h-1.5 rounded-full"
-                style={{ background: "#8B5CF6", boxShadow: "0 0 6px #8B5CF6" }}
-              />
-            </div>
-
-            {/* Inner ring */}
-            <div
-              className="absolute animate-spin-slow"
-              style={{
-                inset: "40px",
-                borderRadius: "50%",
-                border: "1px dashed rgba(255,107,0,0.2)",
-                animationDuration: "20s",
+                inset: "45px",
+                border: "1px solid rgba(245,158,11,0.3)",
               }}
             />
 
             {/* Core — hexagonal profile frame */}
             <div
-              className="relative z-10 flex flex-col items-center justify-center"
+              className="profile-frame relative z-10 flex items-center justify-center overflow-hidden rounded-full"
               style={{
-                width: "160px",
-                height: "160px",
+                width: "330px",
+                height: "330px",
                 background:
-                  "linear-gradient(135deg, rgba(0,240,255,0.08) 0%, rgba(139,92,246,0.08) 50%, rgba(255,107,0,0.05) 100%)",
-                clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                border: "1px solid rgba(0,240,255,0.3)",
+                  "linear-gradient(135deg, rgba(47,128,255,0.08) 0%, rgba(245,158,11,0.08) 100%)",
+                boxShadow: "0 18px 45px rgba(0,0,0,0.55)",
               }}
             >
-              {/* Scan line */}
-              <div
-                className="absolute w-full animate-scan-vertical pointer-events-none overflow-hidden"
+              <img
+                src={profileImage}
+                alt="Dheena Dhayalan"
+                fetchPriority="high"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-contain"
                 style={{
-                  height: "2px",
-                  background:
-                    "linear-gradient(90deg, transparent, rgba(0,240,255,0.6), transparent)",
-                  boxShadow: "0 0 10px rgba(0,240,255,0.4)",
+                  objectPosition: "center",
                 }}
               />
-
-              {/* Avatar letter */}
               <div
-                className="font-display text-4xl font-black neon-text-cyan"
-                style={{ color: "#00F0FF" }}
-              >
-                DM
-              </div>
-              <div
-                className="font-mono text-xs mt-1"
-                style={{ color: "rgba(0,240,255,0.5)", letterSpacing: "0.15em" }}
-              >
-                DESIGNER
-              </div>
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.24) 100%)",
+                }}
+              />
             </div>
 
             {/* Floating HUD chips */}
-            <motion.div
-              className="absolute top-4 -right-2 glass-card px-2 py-1 rounded animate-float"
-              style={{ fontSize: "0.6rem", fontFamily: "monospace", color: "rgba(0,240,255,0.7)" }}
+            <div
+              className="hero-chip hero-chip-blue absolute top-4 -right-2 glass-card px-2 py-1 rounded"
+              style={{ fontSize: "0.6rem", fontFamily: "Poppins, sans-serif", color: "rgba(47,128,255,0.7)" }}
             >
               SYS: ONLINE
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="absolute bottom-8 -left-4 glass-card px-2 py-1 rounded animate-float-delay"
-              style={{ fontSize: "0.6rem", fontFamily: "monospace", color: "rgba(139,92,246,0.8)" }}
+            <div
+              className="hero-chip hero-chip-gold absolute bottom-8 -left-4 glass-card px-2 py-1 rounded"
+              style={{ fontSize: "0.6rem", fontFamily: "Poppins, sans-serif", color: "rgba(245,158,11,0.8)" }}
             >
               UI/UX v2.0
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="absolute top-1/2 -right-8 transform -translate-y-1/2 glass-card px-2 py-1 rounded animate-float"
+            <div
+              className="hero-chip hero-chip-red absolute top-1/2 -right-8 transform -translate-y-1/2 glass-card px-2 py-1 rounded"
               style={{
                 fontSize: "0.55rem",
-                fontFamily: "monospace",
-                color: "rgba(255,107,0,0.7)",
-                animationDelay: "0.8s",
+                fontFamily: "Poppins, sans-serif",
+                color: "rgba(244,63,94,0.7)",
               }}
             >
               LOC: IND
-            </motion.div>
+            </div>
           </div>
 
-          {/* System label */}
-          <div
-            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center"
-            style={{ bottom: "-2rem" }}
-          >
-            <div
-              className="font-mono text-xs tracking-widest"
-              style={{ color: "rgba(0,240,255,0.5)" }}
-            >
-              SYSTEM USER: DHEENADHAYALAN
-            </div>
-            <div className="flex items-center justify-center gap-1.5 mt-1">
-              <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ background: "#22c55e", boxShadow: "0 0 6px #22c55e" }}
-              />
-              <span className="font-mono text-xs" style={{ color: "#22c55e" }}>
-                ONLINE
-              </span>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.button
+      <button
         data-testid="hero-scroll-down"
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1"
-        style={{ color: "rgba(0,240,255,0.4)" }}
+        className="scroll-cue absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1"
+        style={{ color: "rgba(47,128,255,0.4)" }}
         onClick={scrollToAbout}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 5, duration: 0.8 }}
       >
         <span className="font-mono text-xs tracking-widest">SCROLL</span>
-        <ChevronDown size={16} className="animate-bounce" />
-      </motion.button>
+        <ChevronDown size={16} />
+      </button>
     </section>
   );
 }

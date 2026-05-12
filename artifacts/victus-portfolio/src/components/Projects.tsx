@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { X, ExternalLink } from "lucide-react";
 
 const projects = [
@@ -9,29 +8,10 @@ const projects = [
     label: "IMMERSIVE EXPERIENCE PLATFORM",
     description:
       "Designed and developed a modern web experience focused on creativity and digital interaction.",
-    gradient: "linear-gradient(135deg, #00F0FF22, #8B5CF622)",
-    accent: "#00F0FF",
-    tech: ["React", "Three.js", "GSAP"],
-  },
-  {
-    id: "purepath",
-    name: "PurePath",
-    label: "AI ACCESSIBILITY EXTENSION",
-    description:
-      "An AI-powered accessibility solution focused on improving digital usability and user interaction.",
-    gradient: "linear-gradient(135deg, #8B5CF622, #FF6B0022)",
-    accent: "#8B5CF6",
-    tech: ["Python", "AI/ML", "Chrome API"],
-  },
-  {
-    id: "namma",
-    name: "Namma Ooru Vandi",
-    label: "SMART TRACKING APPLICATION",
-    description:
-      "A tracking application concept designed for intuitive interaction and smart monitoring systems.",
-    gradient: "linear-gradient(135deg, #FF6B0022, #00F0FF22)",
-    accent: "#FF6B00",
-    tech: ["React Native", "Maps API", "Node.js"],
+    gradient: "linear-gradient(135deg, #2F80FF22, #F59E0B22)",
+    accent: "#2F80FF",
+    url: "https://www.spectra-3d-hub.in/",
+    image: `${import.meta.env.BASE_URL}project-spectra.png`,
   },
   {
     id: "spica",
@@ -39,9 +19,10 @@ const projects = [
     label: "MODERN BUSINESS WEBSITE",
     description:
       "Developed a professional branding-focused website for a lighting business.",
-    gradient: "linear-gradient(135deg, #22c55e22, #00F0FF22)",
-    accent: "#22c55e",
-    tech: ["HTML", "CSS", "JavaScript"],
+    gradient: "linear-gradient(135deg, #84CC1622, #2F80FF22)",
+    accent: "#84CC16",
+    url: "https://spica-lighting.vercel.app/",
+    image: `${import.meta.env.BASE_URL}project-spica.png`,
   },
   {
     id: "meenu",
@@ -49,31 +30,46 @@ const projects = [
     label: "BRAND EXPERIENCE WEBSITE",
     description:
       "Created an elegant website interface focused on beauty branding and customer engagement.",
-    gradient: "linear-gradient(135deg, #f472b622, #8B5CF622)",
-    accent: "#f472b6",
-    tech: ["Wix Studio", "Figma", "Branding"],
+    gradient: "linear-gradient(135deg, #DB277722, #F59E0B22)",
+    accent: "#DB2777",
+    url: "https://www.meenusbeautyparlour.online/",
+    image: `${import.meta.env.BASE_URL}project-meenu.png`,
+  },
+  {
+    id: "purepath",
+    name: "PurePath",
+    label: "AI ACCESSIBILITY EXTENSION",
+    description:
+      "An AI-powered accessibility solution focused on improving digital usability and user interaction.",
+    gradient: "linear-gradient(135deg, #F59E0B22, #F43F5E22)",
+    accent: "#F59E0B",
+    url: "",
+    image: "",
+  },
+  {
+    id: "namma",
+    name: "Namma Ooru Vandi",
+    label: "SMART TRACKING APPLICATION",
+    description:
+      "A tracking application concept designed for intuitive interaction and smart monitoring portfolios.",
+    gradient: "linear-gradient(135deg, #F43F5E22, #2F80FF22)",
+    accent: "#F43F5E",
+    url: "",
+    image: "",
   },
 ];
 
 function ProjectCard({
   project,
-  index,
-  inView,
   onOpen,
 }: {
   project: (typeof projects)[0];
-  index: number;
-  inView: boolean;
   onOpen: (p: (typeof projects)[0]) => void;
 }) {
   return (
-    <motion.div
+    <div
       data-testid={`project-card-${project.id}`}
-      className="glass-card rounded-lg overflow-hidden group cursor-none relative"
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -6 }}
+      className="glass-card rounded-lg overflow-hidden group cursor-pointer relative"
       onClick={() => onOpen(project)}
     >
       {/* Thumbnail */}
@@ -81,10 +77,21 @@ function ProjectCard({
         className="h-40 relative overflow-hidden"
         style={{ background: project.gradient }}
       >
+        {project.image && (
+          <img
+            src={project.image}
+            alt={`${project.name} preview`}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-300 group-hover:scale-105"
+          />
+        )}
         <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          className="absolute inset-0 opacity-100 transition-opacity duration-500"
           style={{
-            background: `radial-gradient(circle at center, ${project.accent}20 0%, transparent 70%)`,
+            background: project.image
+              ? "linear-gradient(180deg, rgba(5,5,5,0.05) 0%, rgba(5,5,5,0.72) 100%)"
+              : `radial-gradient(circle at center, ${project.accent}20 0%, transparent 70%)`,
           }}
         />
         {/* HUD overlay on hover */}
@@ -136,21 +143,6 @@ function ProjectCard({
         <p className="text-xs mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.tech.map((t) => (
-            <span
-              key={t}
-              className="font-mono text-xs px-2 py-0.5 rounded"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                color: "rgba(255,255,255,0.4)",
-              }}
-            >
-              {t}
-            </span>
-          ))}
-        </div>
       </div>
 
       {/* Bottom border glow on hover */}
@@ -161,13 +153,11 @@ function ProjectCard({
           boxShadow: `0 0 8px ${project.accent}`,
         }}
       />
-    </motion.div>
+    </div>
   );
 }
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
   const [selected, setSelected] = useState<(typeof projects)[0] | null>(null);
 
   return (
@@ -175,29 +165,22 @@ export default function Projects() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 30%, rgba(0,240,255,0.03) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 30%, rgba(47,128,255,0.03) 0%, transparent 60%)",
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-16">
           <div className="section-label">// SECTION_05</div>
           <h2 className="section-title">ACTIVE PROJECT MODULES</h2>
           <div className="section-divider" />
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
-              index={i}
-              inView={inView}
               onOpen={setSelected}
             />
           ))}
@@ -205,24 +188,17 @@ export default function Projects() {
       </div>
 
       {/* Modal */}
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelected(null)}
-            style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          onClick={() => setSelected(null)}
+          style={{ background: "rgba(5,5,5,0.88)" }}
+        >
+          <div
+            className="glass-card rounded-lg max-w-lg w-full p-8 relative"
+            style={{ borderColor: `${selected.accent}40` }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              className="glass-card rounded-lg max-w-lg w-full p-8 relative"
-              style={{ borderColor: `${selected.accent}40` }}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
               <button
                 data-testid="project-modal-close"
                 className="absolute top-4 right-4"
@@ -250,11 +226,25 @@ export default function Projects() {
                 className="h-32 rounded-lg mb-6 relative overflow-hidden"
                 style={{ background: selected.gradient }}
               >
+                {selected.image && (
+                  <img
+                    src={selected.image}
+                    alt={`${selected.name} preview`}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
                 <div
                   className="absolute inset-0"
                   style={{
-                    backgroundImage: `linear-gradient(${selected.accent}15 1px, transparent 1px), linear-gradient(90deg, ${selected.accent}15 1px, transparent 1px)`,
-                    backgroundSize: "20px 20px",
+                    background: selected.image
+                      ? "linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.55) 100%)"
+                      : undefined,
+                    backgroundImage: selected.image
+                      ? undefined
+                      : `linear-gradient(${selected.accent}15 1px, transparent 1px), linear-gradient(90deg, ${selected.accent}15 1px, transparent 1px)`,
+                    backgroundSize: selected.image ? undefined : "20px 20px",
                   }}
                 />
               </div>
@@ -263,34 +253,26 @@ export default function Projects() {
                 {selected.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                {selected.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-xs px-3 py-1 rounded"
-                    style={{
-                      background: `${selected.accent}12`,
-                      border: `1px solid ${selected.accent}30`,
-                      color: selected.accent,
-                    }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <button
-                data-testid="project-modal-view"
-                className="flex items-center gap-2 font-mono text-xs"
-                style={{ color: selected.accent }}
-              >
-                <ExternalLink size={14} />
-                View Project
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {selected.url ? (
+                <a
+                  data-testid="project-modal-view"
+                  href={selected.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 font-mono text-xs"
+                  style={{ color: selected.accent }}
+                >
+                  <ExternalLink size={14} />
+                  View Project
+                </a>
+              ) : (
+                <div className="font-mono text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+                  Link coming soon
+                </div>
+              )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,5 +1,3 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
 import { Trophy, GraduationCap, Briefcase, Users } from "lucide-react";
 
 const achievements = [
@@ -7,7 +5,7 @@ const achievements = [
     icon: Trophy,
     title: "Winner",
     subtitle: "CII Emergence Hackathon",
-    color: "#FF6B00",
+    color: "#F43F5E",
     value: "1st",
     label: "Place",
   },
@@ -15,90 +13,53 @@ const achievements = [
     icon: GraduationCap,
     title: "Academic Topper",
     subtitle: "BCA Program",
-    color: "#00F0FF",
+    color: "#2F80FF",
     value: "8.85",
     label: "CGPA",
   },
   {
     icon: Briefcase,
     title: "Freelance Projects",
-    subtitle: "Logo Design",
-    color: "#8B5CF6",
-    value: 5,
+    subtitle: "Logo Design & Web Dev",
+    color: "#F59E0B",
+    value: 10,
     label: "Projects+",
   },
   {
     icon: Users,
-    title: "Remote Leadership",
-    subtitle: "Teams Across India",
-    color: "#22c55e",
-    value: 3,
-    label: "States+",
+    title: "BCA Department",
+    subtitle: "2026 - 2027",
+    color: "#84CC16",
+    value: "President",
+    label: "Role",
   },
 ];
 
-function CountUp({ target, inView }: { target: number | string; inView: boolean }) {
-  const [display, setDisplay] = useState<string | number>(typeof target === "string" ? target : 0);
-
-  useEffect(() => {
-    if (!inView || typeof target !== "number") {
-      setDisplay(target);
-      return;
-    }
-    let start = 0;
-    const duration = 1200;
-    const step = duration / target;
-    const interval = setInterval(() => {
-      start += 1;
-      setDisplay(start);
-      if (start >= target) {
-        clearInterval(interval);
-        setDisplay(target);
-      }
-    }, step);
-    return () => clearInterval(interval);
-  }, [inView, target]);
-
-  return <>{display}</>;
-}
-
 export default function Achievements() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="achievements" className="relative py-24 px-6">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 60%, rgba(255,107,0,0.04) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 60%, rgba(244,63,94,0.04) 0%, transparent 60%)",
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-16">
           <div className="section-label">// SECTION_06</div>
-          <h2 className="section-title">SYSTEM ACHIEVEMENTS</h2>
+          <h2 className="section-title">PORTFOLIO ACHIEVEMENTS</h2>
           <div className="section-divider" />
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {achievements.map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={item.title}
                 data-testid={`achievement-card-${i}`}
                 className="glass-card rounded-lg p-6 relative overflow-hidden group text-center"
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
-                whileHover={{ y: -4 }}
               >
                 {/* Top accent line */}
                 <div
@@ -135,9 +96,9 @@ export default function Achievements() {
                 {/* Counter */}
                 <div
                   className="font-display text-4xl font-black mb-1"
-                  style={{ color: item.color, textShadow: `0 0 20px ${item.color}60` }}
+                  style={{ color: item.color }}
                 >
-                  <CountUp target={item.value} inView={inView} />
+                  {item.value}
                 </div>
                 <div
                   className="font-mono text-xs tracking-widest mb-3"
@@ -155,7 +116,7 @@ export default function Achievements() {
                 >
                   {item.subtitle}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
