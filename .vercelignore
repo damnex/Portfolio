@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+.git
+.local
+.cache
+.vercel
+attached_assets
+artifacts/**/dist
+artifacts/**/.vite
+**/*.tsbuildinfo
+coverage
+tmp
