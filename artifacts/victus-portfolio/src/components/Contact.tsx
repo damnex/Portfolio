@@ -66,7 +66,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-6">
+    <section id="contact" className="relative py-20 sm:py-24 px-4 sm:px-6 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -74,8 +74,8 @@ export default function Contact() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-16">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="mb-12 sm:mb-16">
           <div className="section-label">// SECTION_07</div>
           <h2 className="section-title">INITIATE CONNECTION</h2>
           <div className="section-divider" />
@@ -88,9 +88,9 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 min-w-0">
           {/* Contact Links */}
-          <div className="flex flex-col gap-4">
+          <div className="flex min-w-0 flex-col gap-4">
             {contactLinks.map((link, i) => {
               const Icon = link.icon;
               return (
@@ -100,7 +100,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`contact-link-${link.label.toLowerCase()}`}
-                  className="glass-card rounded-lg p-5 flex items-center gap-4 group transition-all duration-300"
+                  className="glass-card min-w-0 rounded-lg p-4 sm:p-5 flex items-center gap-3 sm:gap-4 group transition-all duration-300"
                   style={{ borderColor: `${link.color}20` }}
                 >
                   <div
@@ -112,19 +112,19 @@ export default function Contact() {
                   >
                     <Icon size={18} style={{ color: link.color }} />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div
-                      className="font-mono text-xs tracking-widest mb-0.5"
+                      className="font-mono text-[0.65rem] sm:text-xs tracking-widest mb-0.5"
                       style={{ color: `${link.color}80` }}
                     >
                       {link.label}
                     </div>
-                    <div className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+                    <div className="text-xs sm:text-sm leading-relaxed break-words" style={{ color: "rgba(255,255,255,0.7)" }}>
                       {link.value}
                     </div>
                   </div>
                   <div
-                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="ml-auto hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ color: link.color }}
                   >
                     <Send size={14} />
@@ -136,7 +136,7 @@ export default function Contact() {
 
           {/* Form */}
           <div
-            className="glass-card rounded-lg p-8 relative overflow-hidden"
+            className="glass-card min-w-0 rounded-lg p-5 sm:p-8 relative overflow-hidden"
           >
             <div
               className="absolute top-0 left-0 right-0 h-px"
@@ -157,7 +157,7 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="flex min-w-0 flex-col gap-5">
                 <div
                   className="font-mono text-xs tracking-widest mb-1"
                   style={{ color: "rgba(47,128,255,0.5)" }}
@@ -178,7 +178,7 @@ export default function Contact() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Enter your name"
-                    className="input-glow w-full px-4 py-3 rounded font-sans text-sm"
+                    className="input-glow w-full min-w-0 px-4 py-3 rounded font-sans text-sm"
                     style={{ fontFamily: "Poppins, sans-serif" }}
                   />
                 </div>
@@ -196,7 +196,7 @@ export default function Contact() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="Enter your email"
-                    className="input-glow w-full px-4 py-3 rounded font-sans text-sm"
+                    className="input-glow w-full min-w-0 px-4 py-3 rounded font-sans text-sm"
                     style={{ fontFamily: "Poppins, sans-serif" }}
                   />
                 </div>
@@ -214,7 +214,7 @@ export default function Contact() {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Enter your message"
                     rows={4}
-                    className="input-glow w-full px-4 py-3 rounded font-sans text-sm resize-none"
+                    className="input-glow w-full min-w-0 px-4 py-3 rounded font-sans text-sm resize-none"
                     style={{ fontFamily: "Poppins, sans-serif" }}
                   />
                 </div>
@@ -222,7 +222,7 @@ export default function Contact() {
                 <button
                   data-testid="contact-btn-send"
                   type="submit"
-                  className="btn-primary flex items-center justify-center gap-2 mt-2"
+                  className="btn-primary w-full flex items-center justify-center gap-2 mt-2"
                 >
                   <Send size={14} />
                   SEND ON WHATSAPP
