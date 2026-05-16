@@ -12,7 +12,7 @@ const experiences = [
   {
     company: "LandMarket",
     role: "Freelance Graphic Designer",
-    period: "6 Months",
+    period: "1 Month",
     color: "#F59E0B",
     points: [
       "Designed marketing creatives for real estate campaigns.",
