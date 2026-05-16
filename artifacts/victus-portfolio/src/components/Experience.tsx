@@ -12,7 +12,7 @@ const experiences = [
   {
     company: "Indian Awaz Foundation",
     role: "Graphic Designer Internship",
-    period: "May 2026 - Present · 1 Month",
+    period: "2026 - Present",
     color: "#14B8A6",
     points: [
       "Designing social media creatives, promotional materials, and branding visuals.",
