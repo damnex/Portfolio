@@ -10,6 +10,16 @@ const experiences = [
     ],
   },
   {
+    company: "Indian Awaz Foundation",
+    role: "Graphic Designer Internship",
+    period: "May 2026 - Present · 1 Month",
+    color: "#14B8A6",
+    points: [
+      "Designing social media creatives, promotional materials, and branding visuals.",
+      "Supporting digital campaigns through creative visual communication.",
+    ],
+  },
+  {
     company: "LandMarket",
     role: "Freelance Graphic Designer",
     period: "1 Month",
@@ -35,6 +45,7 @@ export default function Experience() {
   const damnexLogo = `${import.meta.env.BASE_URL}damnex-logo.png`;
   const companyLogos: Record<string, string> = {
     Damnex: damnexLogo,
+    "Indian Awaz Foundation": `${import.meta.env.BASE_URL}indian-awaz-logo.jpeg`,
     LandMarket: `${import.meta.env.BASE_URL}landmarket-logo.png`,
     "Space Science Learning Club": `${import.meta.env.BASE_URL}sslc-logo.png`,
   };
