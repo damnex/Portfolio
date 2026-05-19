@@ -1,4 +1,5 @@
 import Particles from "@/components/Particles";
+import ScrollDepthSystem from "@/components/ScrollDepthSystem";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -12,6 +13,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="bg-grid-pattern min-h-screen text-foreground" style={{ backgroundColor: "#050505" }}>
+      <ScrollDepthSystem />
       <Particles />
       <Navbar />
       <main className="relative z-10">
