@@ -1,13 +1,14 @@
 import { ChevronDown, Download } from "lucide-react";
 
 export default function Hero() {
-  const profileImage = `${import.meta.env.BASE_URL}dheena-profile.jpeg`;
+  const heroImage = `${import.meta.env.BASE_URL}dheena-hero-cutout.png`;
   const damnexLogo = `${import.meta.env.BASE_URL}damnex-logo.png`;
   const resumeUrl = `${import.meta.env.BASE_URL}dheenadhayalan-resume.pdf`;
 
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
+
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -15,21 +16,21 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-start lg:items-center justify-center overflow-hidden px-6 pt-24 pb-12 lg:pt-20 lg:pb-0"
+      className="hero-section relative min-h-screen flex items-start lg:items-center justify-center overflow-hidden px-6 pt-24 pb-12 lg:pt-20 lg:pb-0"
     >
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-10 lg:gap-12 items-center relative z-10">
-        {/* Left Content */}
+      <div className="hero-layout max-w-7xl mx-auto w-full grid lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] gap-10 lg:gap-12 items-center relative z-10">
         <div className="hero-copy flex flex-col gap-5 sm:gap-6">
-          {/* Init label */}
           <div
             className="hero-status font-mono text-xs sm:text-sm h-6 flex items-center gap-2"
             style={{ color: "rgba(47,128,255,0.7)" }}
           >
-            <span className="status-dot w-2 h-2 rounded-full bg-primary" style={{ background: "#2F80FF" }} />
+            <span
+              className="status-dot w-2 h-2 rounded-full bg-primary"
+              style={{ background: "#2F80FF" }}
+            />
             BUILDING DIGITAL EXPERIENCES
           </div>
 
-          {/* Main heading */}
           <div>
             <h1
               className="hero-title font-display font-black leading-none tracking-wide"
@@ -62,15 +63,7 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Buttons */}
           <div className="hero-actions grid w-full grid-cols-2 gap-3 sm:flex sm:w-auto sm:flex-wrap sm:gap-4">
-            <button
-              data-testid="hero-btn-enter"
-              className="btn-primary hero-action-wide col-span-2 sm:col-span-1 flex items-center justify-center"
-              onClick={scrollToAbout}
-            >
-              Enter Portfolio
-            </button>
             <button
               data-testid="hero-btn-projects"
               className="btn-secondary flex items-center justify-center"
@@ -89,88 +82,21 @@ export default function Hero() {
               Resume
             </a>
           </div>
-
         </div>
 
-        {/* Right — HUD Profile */}
-        <div className="hero-visual flex items-center justify-center relative">
-          <div className="hero-orbit relative flex items-center justify-center">
-            {/* Outer ring */}
-            <div
-              className="hero-ring hero-ring-outer absolute inset-0 rounded-full"
-              style={{
-                border: "1px solid rgba(47,128,255,0.25)",
-                boxShadow: "0 0 20px rgba(47,128,255,0.1)",
-              }}
-            />
-
-            {/* Middle ring */}
-            <div
-              className="hero-ring hero-ring-inner absolute rounded-full"
-              style={{
-                border: "1px solid rgba(245,158,11,0.3)",
-              }}
-            />
-
-            {/* Core — hexagonal profile frame */}
-            <div
-              className="profile-frame relative z-10 flex items-center justify-center overflow-hidden rounded-full"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(47,128,255,0.08) 0%, rgba(245,158,11,0.08) 100%)",
-                boxShadow: "0 18px 45px rgba(0,0,0,0.55)",
-              }}
-            >
-              <img
-                src={profileImage}
-                alt="Dheena Dhayalan"
-                fetchPriority="high"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-contain"
-                style={{
-                  objectPosition: "center",
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.24) 100%)",
-                }}
-              />
-            </div>
-
-            {/* Floating HUD chips */}
-            <div
-              className="hero-chip hero-chip-blue absolute top-6 right-2 md:top-4 md:-right-2 glass-card px-2 py-1 rounded"
-              style={{ fontSize: "0.6rem", fontFamily: "Poppins, sans-serif", color: "rgba(47,128,255,0.7)" }}
-            >
-              SYS: ONLINE
-            </div>
-
-            <div
-              className="hero-chip hero-chip-gold absolute bottom-6 left-2 md:bottom-8 md:-left-4 glass-card px-2 py-1 rounded"
-              style={{ fontSize: "0.6rem", fontFamily: "Poppins, sans-serif", color: "rgba(245,158,11,0.8)" }}
-            >
-              UI/UX v2.0
-            </div>
-
-            <div
-              className="hero-chip hero-chip-red absolute top-1/2 right-2 md:-right-8 transform -translate-y-1/2 glass-card px-2 py-1 rounded hidden sm:block"
-              style={{
-                fontSize: "0.55rem",
-                fontFamily: "Poppins, sans-serif",
-                color: "rgba(244,63,94,0.7)",
-              }}
-            >
-              LOC: IND
-            </div>
-          </div>
-
+        <div className="hero-visual hero-cutout-stage relative">
+          <div className="hero-cutout-glow" aria-hidden="true" />
+          <div className="hero-cutout-ring" aria-hidden="true" />
+          <img
+            src={heroImage}
+            alt="Dheena Dhayalan"
+            fetchPriority="high"
+            decoding="async"
+            className="hero-cutout-image"
+          />
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <button
         data-testid="hero-scroll-down"
         className="scroll-cue absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col items-center gap-1"
