@@ -35,7 +35,6 @@ export default function Hero() {
             <h1
               className="hero-title font-display font-black leading-none tracking-wide"
               style={{
-                fontSize: "clamp(2.35rem, 6.6vw, 4.75rem)",
                 color: "#fff",
               }}
             >
