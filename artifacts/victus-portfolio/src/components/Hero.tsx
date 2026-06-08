@@ -41,7 +41,7 @@ export default function Hero() {
               DHEENA
               <br />
               <span className="neon-text-cyan" style={{ color: "#2F80FF" }}>
-                DHAYALAN M
+                DHAYALAN
               </span>
             </h1>
           </div>
