@@ -15,8 +15,8 @@ const skillGroups = [
     category: "Design",
     color: "#F59E0B",
     skills: [
-      { name: "UI/UX Design", level: 95 },
-      { name: "Graphic Design", level: 88 },
+      { name: "Graphic Design", level: 95 },
+      { name: "UI/UX Design", level: 88 },
       { name: "Branding", level: 85 },
       { name: "Visual Design", level: 90 },
     ],
