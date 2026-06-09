@@ -1238,6 +1238,18 @@
     margin-top: 0.25rem;
   }
 
+  .hero-cutout-stage::after {
+    left: 50%;
+    right: auto;
+    bottom: -0.85rem;
+    width: min(34rem, 118vw);
+    height: min(5.25rem, 13vh);
+    transform: translate3d(-50%, 0, 0);
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(5, 5, 5, 0.08) 30%, rgba(5, 5, 5, 0.38) 70%, rgba(5, 5, 5, 0.86) 100%),
+      radial-gradient(ellipse at 50% 100%, rgba(5, 5, 5, 0.58), transparent 72%);
+  }
+
   .hero-cutout-glow {
     right: 50%;
     bottom: 0;
