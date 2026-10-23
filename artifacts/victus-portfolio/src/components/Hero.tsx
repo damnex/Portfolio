@@ -1,7 +1,9 @@
-import { ChevronDown, Download } from "lucide-react";
+﻿import { ChevronDown, Download } from "lucide-react";
+import HeroPortrait from "./HeroPortrait";
 
 export default function Hero() {
   const heroImage = `${import.meta.env.BASE_URL}dheena-hero-cutout.png`;
+  const ironManImage = `${import.meta.env.BASE_URL}dheena-hero-ironman.png`;
   const damnexLogo = `${import.meta.env.BASE_URL}damnex-logo.png`;
   const resumeUrl = `${import.meta.env.BASE_URL}dheenadhayalan-resume.pdf`;
 
@@ -86,12 +88,10 @@ export default function Hero() {
         <div className="hero-visual hero-cutout-stage relative">
           <div className="hero-cutout-glow" aria-hidden="true" />
           <div className="hero-cutout-ring" aria-hidden="true" />
-          <img
-            src={heroImage}
-            alt="Dheena Dhayalan"
-            fetchPriority="high"
-            decoding="async"
-            className="hero-cutout-image"
+          <HeroPortrait
+            originalSrc={heroImage}
+            transformedSrc={ironManImage}
+            revealRadius={180}
           />
         </div>
       </div>
